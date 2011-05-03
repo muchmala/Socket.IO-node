@@ -107,6 +107,18 @@ Methods:
 
 	Broadcasts a message to all clients. Optionally, you can pass a single session ID or array of session IDs to avoid broadcasting to, as the second argument.
 	
+- *broadcastExcept(message, [except])*
+
+	Alias to broadcast
+
+- *broadcastOnly(message, clients)*
+
+	Broadcasts a message to listed clients. Clients can be a single session ID or array of session IDs.
+
+- *broadcastToChannel(channel, message, [except])*
+
+	Broadcasts a message to all clients subscribed to specified channel. Optionally, you can pass a single session ID or array of session IDs to avoid broadcasting to, as the second argument.
+
 Options:
 	
 - *resource*
@@ -179,9 +191,21 @@ Methods:
 
 	Sends a message to the client.
 	
+- *subscribeToChannel(channel)*
+
+	Adds client to specified channel. When subscription is complete, all messages sent by Listener::broadcastToChannel(channel, ..) should be delivered to this client.
+
+- *unsubscribeFromChannel(message)*
+
+	Removes subscription to the channel.
+
 - *broadcast(message)*
 
 	Sends a message to all other clients. Equivalent to Listener::broadcast(message, client.sessionId).
+
+- *broadcastToChannel(channel, message)*
+
+	Sends a message to all other clients subscribed to specified channel. Equivalent to Listener::broadcastToChannel(channel, message, client.sessionId).
 
 ## Protocol
 
