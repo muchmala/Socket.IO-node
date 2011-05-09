@@ -78,3 +78,7 @@ io.on('connection', function(client){
     client.broadcast({ announcement: client.sessionId + ' disconnected' });
   });
 });
+
+io.on('channelSubscription', function(channel, subscribers) {
+  io.broadcast({ announcement: 'Channel ' + channel + ' has ' + subscribers.length + ' subscriber(s) now!' });
+});
